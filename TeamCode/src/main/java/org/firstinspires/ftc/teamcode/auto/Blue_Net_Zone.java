@@ -27,7 +27,7 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package org.firstinspires.ftc.teamcode.andyscode;
+package org.firstinspires.ftc.teamcode.auto;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
@@ -50,8 +50,8 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
  * Remove or comment out the @Disabled line to add this OpMode to the Driver Station OpMode list
  */
 
-@Autonomous(name=" Auto Drive: Blue Far ", group="Robot")
-public class Blue_Far_Board extends AutoCommon {
+@Autonomous(name=" Auto: Blue Net Zone ", group="Robot")
+public class Blue_Net_Zone extends AutoCommon {
 
     @Override
     public void runOpMode() {
