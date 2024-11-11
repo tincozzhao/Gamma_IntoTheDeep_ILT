@@ -92,41 +92,47 @@ public abstract class AutoCommon extends LinearOpMode {
     public Servo grabberR = null;
 
     public void initAll(){
-        initTfodAndAprilTag();
+       // initTfodAndAprilTag();
         initServo();
         initMotor();
         initIMU();
     }
     public void initServo() {
-        grabberTilt = hardwareMap.get(Servo.class, "grabberTilt");
-        grabberTilt.setPosition(1);
-        grabberL = hardwareMap.get(Servo.class, "grabberL");
-        grabberL.setPosition(0.45);
-        grabberR = hardwareMap.get(Servo.class, "grabberR");
-        grabberR.setPosition(0.6);
+        grabberTilt = hardwareMap.get(Servo.class, "tiltServoL");
+       // grabberTilt.setPosition(1);
+        grabberL = hardwareMap.get(Servo.class, "grabServoL");
+       // grabberL.setPosition(0.45);
+       // grabberR = hardwareMap.get(Servo.class, "grabberR");
+       // grabberR.setPosition(0.6);
     }
 
     public void initArm() {
-        rotator = hardwareMap.get(DcMotor.class, "rotator");
+        rotator = hardwareMap.get(DcMotor.class, "liftArm");
+        extender = hardwareMap.get(DcMotor.class, "liftHex");
         //lifter = hardwareMap.get(DcMotor.class, "lifter");
-        rotator.setPower(0);
+        //rotator.setPower(0);
         //lifter.setPower(0);
     }
     public void initMotor(){
         // Initialize the drive system variables.
-        backleftDrive  = hardwareMap.get(DcMotor.class, "bl");
-        backrightDrive = hardwareMap.get(DcMotor.class, "br");
-        frontleftDrive  = hardwareMap.get(DcMotor.class, "fl");
-        frontrightDrive = hardwareMap.get(DcMotor.class, "fr");
+        backleftDrive  = hardwareMap.get(DcMotor.class, "motorbl");
+        backrightDrive = hardwareMap.get(DcMotor.class, "motorbr");
+        frontleftDrive  = hardwareMap.get(DcMotor.class, "motorfl");
+        frontrightDrive = hardwareMap.get(DcMotor.class, "motorfr");
 
         // To drive forward, most robots need the motor on one side to be reversed, because the axles point in opposite directions.
         // When run, this OpMode should start both motors driving forward. So adjust these two lines based on your first test drive.
         // Note: The settings here assume direct drive on left and right wheels.  Gear Reduction or 90 Deg drives may require direction flips
 
-        backrightDrive.setDirection(DcMotor.Direction.REVERSE);
-        backleftDrive.setDirection(DcMotor.Direction.REVERSE);
-        frontrightDrive.setDirection(DcMotor.Direction.FORWARD);
-        frontleftDrive.setDirection(DcMotor.Direction.REVERSE);
+        frontrightDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        frontrightDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        backrightDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        backleftDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+
+       // backrightDrive.setDirection(DcMotor.Direction.REVERSE);
+        //backleftDrive.setDirection(DcMotor.Direction.REVERSE);
+        //frontrightDrive.setDirection(DcMotor.Direction.FORWARD);
+       // frontleftDrive.setDirection(DcMotor.Direction.REVERSE);
 
         initArm();
     }
@@ -477,7 +483,7 @@ public abstract class AutoCommon extends LinearOpMode {
     public void initIMU(){
         // Initialize IMU in the control hub
         RevHubOrientationOnRobot.LogoFacingDirection logoDirection = RevHubOrientationOnRobot.LogoFacingDirection.LEFT;
-        RevHubOrientationOnRobot.UsbFacingDirection  usbDirection  = RevHubOrientationOnRobot.UsbFacingDirection.BACKWARD;
+        RevHubOrientationOnRobot.UsbFacingDirection  usbDirection  = RevHubOrientationOnRobot.UsbFacingDirection.TOP;
         RevHubOrientationOnRobot orientationOnRobot = new RevHubOrientationOnRobot(logoDirection, usbDirection);
         imu = hardwareMap.get(IMU.class, "imu");
         imu.initialize(new IMU.Parameters(orientationOnRobot));
