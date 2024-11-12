@@ -13,11 +13,9 @@ import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.AngularVelocity;
 import org.firstinspires.ftc.robotcore.external.navigation.YawPitchRollAngles;
-import org.firstinspires.ftc.robotcore.external.tfod.Recognition;
 import org.firstinspires.ftc.vision.VisionPortal;
 import org.firstinspires.ftc.vision.apriltag.AprilTagDetection;
 import org.firstinspires.ftc.vision.apriltag.AprilTagProcessor;
-import org.firstinspires.ftc.vision.tfod.TfodProcessor;
 
 import java.util.List;
 
@@ -32,7 +30,7 @@ public abstract class AutoCommon extends LinearOpMode {
     protected DcMotor         frontrightDrive  = null;
 
     protected DcMotor         rotator  = null;
-    protected DcMotor         lifter  = null;
+    protected DcMotor         extender  = null;
 
     protected ElapsedTime     runtime = new ElapsedTime();
 
@@ -77,8 +75,6 @@ public abstract class AutoCommon extends LinearOpMode {
     /**
      * The variable to store our instance of the TensorFlow Object Detection processor.
      */
-    protected TfodProcessor tfod;
-
     /**
      * The variable to store our instance of the vision portal.
      */
@@ -136,86 +132,6 @@ public abstract class AutoCommon extends LinearOpMode {
 
         initArm();
     }
-    public void initTfodAndAprilTag() {
-
-        // Create the TensorFlow processor by using a builder.
-        tfod = new TfodProcessor.Builder()
-
-                // With the following lines commented out, the default TfodProcessor Builder
-                // will load the default model for the season. To define a custom model to load,
-                // choose one of the following:
-                //   Use setModelAssetName() if the custom TF Model is built in as an asset (AS only).
-                //   Use setModelFileName() if you have downloaded a custom team model to the Robot Controller.
-                .setModelAssetName(TFOD_MODEL_ASSET)
-                //.setModelFileName(TFOD_MODEL_FILE)
-
-                // The following default settings are available to un-comment and edit as needed to
-                // set parameters for custom models.
-                .setModelLabels(LABELS)
-                //.setIsModelTensorFlow2(true)
-                //.setIsModelQuantized(true)
-                //.setModelInputSize(300)
-                //.setModelAspectRatio(16.0 / 9.0)
-
-                .build();
-
-        // Create the vision portal by using a builder.
-        VisionPortal.Builder builder = new VisionPortal.Builder();
-
-        // Set the camera (webcam vs. built-in RC phone camera).
-        if (USE_WEBCAM) {
-            builder.setCamera(hardwareMap.get(WebcamName.class, "Webcam 1"));
-        } else {
-            builder.setCamera(BuiltinCameraDirection.BACK);
-        }
-
-        // Choose a camera resolution. Not all cameras support all resolutions.
-        //builder.setCameraResolution(new Size(640, 480));
-
-        // Enable the RC preview (LiveView).  Set "false" to omit camera monitoring.
-        //builder.enableLiveView(true);
-
-        // Set the stream format; MJPEG uses less bandwidth than default YUY2.
-        //builder.setStreamFormat(VisionPortal.StreamFormat.YUY2);
-
-        // Choose whether or not LiveView stops if no processors are enabled.
-        // If set "true", monitor shows solid orange screen if no processors enabled.
-        // If set "false", monitor shows camera view without annotations.
-        //builder.setAutoStopLiveView(false);
-
-        // Set and enable the processor.
-        builder.addProcessor(tfod);
-
-        // Create the AprilTag processor.
-        aprilTag = new AprilTagProcessor.Builder()
-
-                // The following default settings are available to un-comment and edit as needed.
-                //.setDrawAxes(false)
-                //.setDrawCubeProjection(false)
-                //.setDrawTagOutline(true)
-                //.setTagFamily(AprilTagProcessor.TagFamily.TAG_36h11)
-                //.setTagLibrary(AprilTagGameDatabase.getCenterStageTagLibrary())
-                //.setOutputUnits(DistanceUnit.INCH, AngleUnit.DEGREES)
-
-                // == CAMERA CALIBRATION ==
-                // If you do not manually specify calibration parameters, the SDK will attempt
-                // to load a predefined calibration for your camera.
-                //.setLensIntrinsics(578.272, 578.272, 402.145, 221.506)
-                // ... these parameters are fx, fy, cx, cy.
-
-                .build();
-
-        builder.addProcessor(aprilTag);
-        // Build the Vision Portal, using the above settings.
-        visionPortal = builder.build();
-
-        // Set confidence threshold for TFOD recognitions, at any time.
-        //tfod.setMinResultConfidence(0.75f);
-
-        // Disable or re-enable the TFOD processor at any time.
-        //visionPortal.setProcessorEnabled(tfod, true);
-
-    }   // end method initTfod()
 
     public void encoderDrive(double speed,
                              double leftInches, double rightInches,
@@ -284,71 +200,6 @@ public abstract class AutoCommon extends LinearOpMode {
 
             sleep(250);   // optional pause after each move.
         }
-    }
-
-    public String detectTeamPropLine(String init_pos){
-        String result = "right";
-        /*
-        if (init_pos.equals("blue near") || init_pos.equals("red far"))
-            result = "right";
-        else
-            result = "left";
-         */
-
-        for (int i = 0; i < 200; i++) {
-            List<Recognition> currentRecognitions = tfod.getRecognitions();
-            if(currentRecognitions.isEmpty()){
-                sleep(20);
-            }
-            else {
-                telemetry.addData("# Objects Detected", currentRecognitions.size());
-
-                // Step through the list of recognitions and display info for each one.
-                //for (Recognition recognition : currentRecognitions) {
-                Recognition recognition = currentRecognitions.get(0);
-                double x = (recognition.getLeft() + recognition.getRight()) / 2;
-                double y = (recognition.getTop() + recognition.getBottom()) / 2;
-
-                telemetry.addData("", " ");
-                telemetry.addData("Image", "%s (%.0f %% Conf.)", recognition.getLabel(), recognition.getConfidence() * 100);
-                telemetry.addData("- Position", "%.0f / %.0f", x, y);
-                telemetry.addData("- Size", "%.0f x %.0f", recognition.getWidth(), recognition.getHeight());
-
-                if (init_pos.equals("blue near") || init_pos.equals("red near")){
-                    if (x >450) {
-                        result = "middle";
-                        break;
-                    } else {
-                        result = "left";
-                        break;
-                    }
-                }
-                else {
-                    /*
-                    if (x < 150) {
-                        result = "left";
-                        break;
-                    } else {
-                        result = "middle";
-                        break;
-                    }
-
-                     */
-                    if (x >450) {
-                        result = "middle";
-                        break;
-                    } else {
-                        result = "left";
-                        break;
-                    }
-                }
-
-
-                //}
-            }
-            // end for() loop
-        }
-        return result;
     }
 
     public void driveToBackBoardByAprilTag(int targetId) {
@@ -483,7 +334,7 @@ public abstract class AutoCommon extends LinearOpMode {
     public void initIMU(){
         // Initialize IMU in the control hub
         RevHubOrientationOnRobot.LogoFacingDirection logoDirection = RevHubOrientationOnRobot.LogoFacingDirection.LEFT;
-        RevHubOrientationOnRobot.UsbFacingDirection  usbDirection  = RevHubOrientationOnRobot.UsbFacingDirection.TOP;
+        RevHubOrientationOnRobot.UsbFacingDirection  usbDirection  = RevHubOrientationOnRobot.UsbFacingDirection.UP;
         RevHubOrientationOnRobot orientationOnRobot = new RevHubOrientationOnRobot(logoDirection, usbDirection);
         imu = hardwareMap.get(IMU.class, "imu");
         imu.initialize(new IMU.Parameters(orientationOnRobot));
