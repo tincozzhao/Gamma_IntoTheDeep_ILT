@@ -83,6 +83,9 @@ public class RobotHardware {
         motorfl.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         motorbr.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         motorbl.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        motorfl.setDirection(DcMotor.Direction.REVERSE);
+        motorfr.setDirection(DcMotor.Direction.REVERSE);
+
 
         // Define and initialize ALL installed servos.
 

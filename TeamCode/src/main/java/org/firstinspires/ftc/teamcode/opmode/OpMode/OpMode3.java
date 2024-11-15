@@ -37,7 +37,7 @@ public class OpMode3 extends LinearOpMode {
             double vertical = -gamepad1.left_stick_y * 0.5;
             double turn = gamepad1.right_stick_x * 0.5;
 
-            robot.setDrivePower(vertical + turn - horizontal, vertical - turn + horizontal, vertical + turn + horizontal, vertical - turn - horizontal);
+            robot.setDrivePower(vertical + turn + horizontal, vertical - turn - horizontal, vertical + turn - horizontal, vertical - turn + horizontal);
 
             telemetry.addLine(String.format("FL: %d \nBL %d \nFR: %d \nBR: %d ",
                     robot.motorfl.getCurrentPosition(),

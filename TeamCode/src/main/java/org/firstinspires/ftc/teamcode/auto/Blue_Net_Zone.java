@@ -64,8 +64,13 @@ public class Blue_Net_Zone extends AutoCommon {
         waitForStart();
         // Step through each leg of the path, ensuring that the Auto mode has not been stopped along the way
         grabberTilt.setPosition(0.1);
-        // Step 1:  Drive forward for 3 seconds
+        // Step 1:  Drive forward for 1 second
         //line = "left";
-        encoderDrive(0.1,  31,  31, 2.0);
+        encoderDrive(0.1,  31,  31, 1.0);
+        //turn(-0.1, 0.1, 1500);
+        encoderDrive(0.1,  31,  31, 1.0);
+
+
+
     }
 }

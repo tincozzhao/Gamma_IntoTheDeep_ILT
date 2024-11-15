@@ -121,14 +121,15 @@ public abstract class AutoCommon extends LinearOpMode {
         // Note: The settings here assume direct drive on left and right wheels.  Gear Reduction or 90 Deg drives may require direction flips
 
         frontrightDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        frontrightDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        frontleftDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         backrightDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         backleftDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
-       // backrightDrive.setDirection(DcMotor.Direction.REVERSE);
+        //backrightDrive.setDirection(DcMotor.Direction.REVERSE);
         //backleftDrive.setDirection(DcMotor.Direction.REVERSE);
-        //frontrightDrive.setDirection(DcMotor.Direction.FORWARD);
-       // frontleftDrive.setDirection(DcMotor.Direction.REVERSE);
+        frontrightDrive.setDirection(DcMotor.Direction.FORWARD);
+        frontleftDrive.setDirection(DcMotor.Direction.REVERSE);
+
 
         initArm();
     }
