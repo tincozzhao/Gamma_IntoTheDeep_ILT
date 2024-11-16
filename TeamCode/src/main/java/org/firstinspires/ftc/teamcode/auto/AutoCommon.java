@@ -203,7 +203,7 @@ public abstract class AutoCommon extends LinearOpMode {
         }
     }
 
-    public void driveToBackBoardByAprilTag(int targetId) {
+  /* public void driveToBackBoardByAprilTag(int targetId) {
         //adjustment position according to apriltag
         double xPos = 10;
         double yPos = 10;
@@ -220,7 +220,9 @@ public abstract class AutoCommon extends LinearOpMode {
             for (AprilTagDetection detection : currentDetections) {
 
                 idSeen = detection.id;
-/*
+
+
+
                 if (detection.metadata != null) {
                     telemetry.addLine(String.format("\n==== (ID %d) %s", detection.id, detection.metadata.name));
                     telemetry.addLine(String.format("XYZ %6.1f %6.1f %6.1f  (inch)", detection.ftcPose.x, detection.ftcPose.y, detection.ftcPose.z));
@@ -230,7 +232,7 @@ public abstract class AutoCommon extends LinearOpMode {
                     telemetry.addLine(String.format("\n==== (ID %d) Unknown", detection.id));
                     telemetry.addLine(String.format("Center %6.0f %6.0f   (pixels)", detection.center.x, detection.center.y));
                 }
-*/
+
                 if (detection.id == targetId) {
                     xPos = detection.ftcPose.x;
                     break;
@@ -268,8 +270,8 @@ public abstract class AutoCommon extends LinearOpMode {
             maxTries++;
         }
     }
-
-    public void strafe(double power, int milliseconds) {
+*/
+  /*  public void strafe(double power, int milliseconds) {
 
         frontleftDrive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         backleftDrive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
@@ -316,6 +318,8 @@ public abstract class AutoCommon extends LinearOpMode {
         sleep(milliseconds);
         stopRobot();
     }
+
+  */
     public void stopRobot(){
         frontleftDrive.setPower(0);
         frontrightDrive.setPower(0);
@@ -323,7 +327,7 @@ public abstract class AutoCommon extends LinearOpMode {
         backrightDrive.setPower(0);
     }
 
-    public void turn(double powerLeft, double powerRight, long milliseconds){
+   /* public void turn(double powerLeft, double powerRight, long milliseconds){
         frontleftDrive.setPower(powerLeft);
         frontrightDrive.setPower(powerRight);
         backleftDrive.setPower(powerLeft);
@@ -331,6 +335,7 @@ public abstract class AutoCommon extends LinearOpMode {
         sleep(milliseconds);
         stopRobot();
     }
+    */
 
     public void initIMU(){
         // Initialize IMU in the control hub
@@ -353,7 +358,7 @@ public abstract class AutoCommon extends LinearOpMode {
     public double getCurrentYaw() {
         return imu.getRobotYawPitchRollAngles().getYaw(AngleUnit.DEGREES);
     }
-    private void driveStrafe(int flTarget, int blTarget, int frTarget, int brTarget,
+   /* private void driveStrafe(int flTarget, int blTarget, int frTarget, int brTarget,
                              double power,
                              boolean bKeepYaw, double targetYaw){
         double currentYaw, diffYaw;
@@ -425,7 +430,7 @@ public abstract class AutoCommon extends LinearOpMode {
         backrightDrive.setPower(0);
     }
 
-
+*/
     public void turnToTargetYaw(double targetYawDegree, double power, long maxAllowedTimeInMills){
         long timeBegin, timeCurrent;
         double currentYaw = imu.getRobotYawPitchRollAngles().getYaw(AngleUnit.DEGREES);;
@@ -469,7 +474,7 @@ public abstract class AutoCommon extends LinearOpMode {
         }
     }
 
-    public void turnToTargetYaw2(double targetYawDegree, double power, long maxAllowedTimeInMills){
+ /*   public void turnToTargetYaw2(double targetYawDegree, double power, long maxAllowedTimeInMills){
         long timeBegin, timeCurrent;
         double currentYaw = imu.getRobotYawPitchRollAngles().getYaw(AngleUnit.DEGREES);;
         int ticks, tickDirection;
@@ -509,6 +514,7 @@ public abstract class AutoCommon extends LinearOpMode {
             telemetry.update();
         }
     }
+    */
     private void driveMotors(int flTarget, int blTarget, int frTarget, int brTarget,
                              double power,
                              boolean bKeepYaw, double targetYaw){

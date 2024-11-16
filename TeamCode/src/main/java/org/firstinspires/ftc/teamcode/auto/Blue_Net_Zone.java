@@ -66,10 +66,12 @@ public class Blue_Net_Zone extends AutoCommon {
         grabberTilt.setPosition(0.1);
         // Step 1:  Drive forward for 1 second
         //line = "left";
-        encoderDrive(0.1,  31,  31, 1.0);
-        //turn(-0.1, 0.1, 1500);
-        encoderDrive(0.1,  31,  31, 1.0);
-
+        encoderDrive(0.1,  31,  31, 2);
+       /* turn(-0.1, 0.1, 2000);
+        encoderDrive(0.1,  31,  31, 1.7);
+        turn(-0.1, 0.1, 1500);
+        encoderDrive(0.1,  31,  31, .5);
+        */
 
 
     }
