@@ -63,6 +63,7 @@ public class OpMode3 extends LinearOpMode {
  */
 
             while (gamepad2.b) { //if button a pressed
+                // robot.liftHex.setPower(1.0);
                 robot.liftHex.setPower(1.0);
                 //tilt the lift to be upright
             }
@@ -70,6 +71,7 @@ public class OpMode3 extends LinearOpMode {
 
 
             while (gamepad2.x) {
+                //robot.liftHex.setPower(-1.0);
                 robot.liftHex.setPower(-1.0);
             }
             robot.liftHex.setPower(0);
