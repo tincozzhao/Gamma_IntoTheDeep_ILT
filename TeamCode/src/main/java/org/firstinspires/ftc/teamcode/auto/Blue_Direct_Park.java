@@ -51,7 +51,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
  */
 
 @Autonomous(name=" Auto: Blue Net Zone ", group="Robot")
-public class Blue_Direct_Park extends AutoCommon {
+public class Blue_Direct_Park extends AutoHardware {
 
     @Override
     public void runOpMode() {
