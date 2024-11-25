@@ -333,6 +333,7 @@ public abstract class AutoHardware extends LinearOpMode {
 
     public void initIMU(){
         // Initialize IMU in the control hub
+        //                                                                              Yaw: goes counter-clockwise
         RevHubOrientationOnRobot.LogoFacingDirection logoDirection = RevHubOrientationOnRobot.LogoFacingDirection.LEFT;
         RevHubOrientationOnRobot.UsbFacingDirection  usbDirection  = RevHubOrientationOnRobot.UsbFacingDirection.UP;
         RevHubOrientationOnRobot orientationOnRobot = new RevHubOrientationOnRobot(logoDirection, usbDirection);

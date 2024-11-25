@@ -27,16 +27,11 @@ public class GyroAuto extends AutoHardware {
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
 
-//        while (opModeIsActive()){
-//            Orientation orientation = robot.imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
-//
-//            telemetry.addData("Orientation: ",orientation.firstAngle);
-//            telemetry.update();
-//        }
-
-        turnTo(90);
-        sleep(3000);
-
+        while (opModeIsActive()){
+            // telemetry prints out information on drivers station
+            telemetry.addData("Orientation: ", getCurrentYaw());
+            telemetry.update();
+       }
 
     }
     public void resetAngle(){
