@@ -466,6 +466,7 @@ public abstract class AutoHardware extends LinearOpMode {
             telemetry.addLine(String.format("\nCurrentYaw=%.2f\nTargetYaw=%.2f\nTimeLapsed=%.2f ms",
                     currentYaw, targetYawDegree, (double)(timeCurrent-timeBegin)));
             telemetry.update();
+
         }
     }
 

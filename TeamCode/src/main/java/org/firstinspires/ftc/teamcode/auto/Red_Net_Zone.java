@@ -50,39 +50,35 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
  * Remove or comment out the @Disabled line to add this OpMode to the Driver Station OpMode list
  */
 
-@Autonomous(name=" Auto: Blue Specimen Placement ", group="Robot")
-public class Blue_Specimen_Placement extends AutoHardware {
+@Autonomous(name=" Auto: Red Net Zone ", group="Robot")
+public class Red_Net_Zone extends AutoHardware {
 
     @Override
     public void runOpMode() {
 
         initAll();
         // Send telemetry message to signify robot waiting;
-        telemetry.addData("Status", "Ready to run");    //
+        telemetry.addData("Status", "Ready to run");
         telemetry.update();
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
         // Step through each leg of the path, ensuring that the Auto mode has not been stopped along the way
         grabberTilt.setPosition(0.1);
+
         grabberL.setPosition(0.0);
+
         sleep(5000);
+
         sleep(500);
         // Step 1:  Drive forward for 1 second
         //line = "left";
-        encoderDrive(0.1,  31,  33, 1.1);
-        grabberTilt.setPosition(1);
-        //turnToTargetYaw function(turn 90 degrees clockwise)
-        turnToTargetYaw(90, .1, 5);
-        // drive backwards (-50) 50 inches, time is .5 second
-        /*COMMENTED OUT FOR TEST TRIAL*/
-       // encoderDrive(0.1,  -50,  -53, 0.5);
-       // turnToTargetYaw(-90, .1, 2000);
-        //encoderDrive(0.1,  -50,  -53, 0.7);
-       // turnToTargetYaw(90, .1, 2000);
-       // encoderDrive(0.1,  -50,  -53, 0.5);
-       // turnToTargetYaw(90, .1, 2000);
-       // encoderDrive(0.1,  -50,  -53, 2);
+        encoderDrive(0.1,  31,  33, 2.1);
 
+        grabberL.setPosition(1.0);
+
+        sleep(500);
+
+        encoderDrive(0.1,  -50,  -53, 2.2);
        /* turn(-0.1, 0.1, 2000);
         encoderDrive(0.1,  31,  31, 1.7);
         turn(-0.1, 0.1, 1500);
