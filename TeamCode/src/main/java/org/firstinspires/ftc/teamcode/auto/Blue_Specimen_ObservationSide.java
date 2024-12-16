@@ -70,7 +70,7 @@ public class Blue_Specimen_ObservationSide extends AutoHardware {
         // Step 1:  Drive forward for 1 second
         //line = "left";
 
-        encoderDrive(0.1,  31,  33, 1.1);
+        encoderDrive(0.1,  31,  33, 1.5);
 
         grabberTilt.setPosition(1);
 
@@ -80,15 +80,15 @@ public class Blue_Specimen_ObservationSide extends AutoHardware {
         //sleep(2000);
 
         // drive backwards (-50) 50 inches, time is .5 second
-        encoderDrive(0.1,  -50,  -53, 0.5);
+        encoderDrive(0.1,  -50,  -53, 0.8);
         //sleep(1000);
         turnToTargetYaw(-90, .1, 2000);
         //sleep(1000);
-        encoderDrive(0.1,  -50,  -53, 0.7);
+        encoderDrive(0.1,  -50,  -53, 1);
         //sleep(1000);
        turnToTargetYaw(90, .1, 2000);
         //sleep(1000);
-        encoderDrive(0.1,  -50,  -53, 0.5);
+        encoderDrive(0.1,  -50,  -53, 0.8);
         //sleep(1000);
         turnToTargetYaw(90, .1, 2000);
         //sleep(1000);

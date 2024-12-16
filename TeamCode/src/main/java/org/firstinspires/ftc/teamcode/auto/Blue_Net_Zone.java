@@ -63,23 +63,33 @@ public class Blue_Net_Zone extends AutoHardware {
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
         // Step through each leg of the path, ensuring that the Auto mode has not been stopped along the way
-        grabberTilt.setPosition(0.1);
+        grabberTilt.setPosition(0.8);
 
-        grabberL.setPosition(0.0);
+        grabberL.setPosition(1.0);
 
-        sleep(5000);
+        sleep(2000);
 
         sleep(500);
 
         // Step 1:  Drive forward for 1 second
         //line = "left";
-        encoderDrive(0.1,  31,  33, 2.1);
+        encoderDrive(0.3,  38,  38, 9);
 
-        grabberL.setPosition(1.0);
+        //extender.setPower(0.5);
+
+        sleep(2000);
+
+        grabberL.setPosition(0.1);
 
         sleep(500);
+        // turn 90deg clockwise
+        turnToTargetYaw(-90, .2, 1000);
 
-        encoderDrive(0.1,  -50,  -53, 2.2);
+        encoderDrive(0.3,  56,  53, 5);
+        turnToTargetYaw(90, .2, 1s000);
+        encoderDrive(0.3,  -56,  -53, 3);
+
+
        /* turn(-0.1, 0.1, 2000);
         encoderDrive(0.1,  31,  31, 1.7);
         turn(-0.1, 0.1, 1500);

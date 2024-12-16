@@ -64,13 +64,14 @@ public class Blue_Direct_Park extends AutoHardware {
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
         // Step through each leg of the path, ensuring that the Auto mode has not been stopped along the way
-        grabberTilt.setPosition(0.1);
-        grabberL.setPosition(0.0);
+        grabberTilt.setPosition(0.5);
+        grabberL.setPosition(0.5);
         //sleep(5000);
         sleep(500);
         // Step 1:  Drive forward for 1 second
         //line = "left";
-        encoderDrive(0.1,  31,  33, 1.5);
+        encoderDrive(0.37,  31,  33, 8);
+        sleep (7000);
        /* turn(-0.1, 0.1, 2000);
         encoderDrive(0.1,  31,  31, 1.7);
         turn(-0.1, 0.1, 1500);
