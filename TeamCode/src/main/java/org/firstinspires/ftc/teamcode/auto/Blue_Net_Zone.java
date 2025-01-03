@@ -71,11 +71,8 @@ public class Blue_Net_Zone extends AutoHardware {
 
         sleep(500);
 
-        // Step 1:  Drive forward for 1 second
-        //line = "left";
-        encoderDrive(0.3,  38,  38, 9);
 
-        //extender.setPower(0.5);
+        encoderDrive(0.3,  38,  38, 9);
 
         sleep(2000);
 
@@ -86,15 +83,8 @@ public class Blue_Net_Zone extends AutoHardware {
         turnToTargetYaw(-90, .2, 1000);
 
         encoderDrive(0.3,  56,  53, 5);
-        turnToTargetYaw(90, .2, 1s000);
+        turnToTargetYaw(90, .2, 1000);
         encoderDrive(0.3,  -56,  -53, 3);
-
-
-       /* turn(-0.1, 0.1, 2000);
-        encoderDrive(0.1,  31,  31, 1.7);
-        turn(-0.1, 0.1, 1500);
-        encoderDrive(0.1,  31,  31, .5);
-        */
 
 
     }

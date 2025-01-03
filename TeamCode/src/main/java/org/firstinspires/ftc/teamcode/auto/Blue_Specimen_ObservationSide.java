@@ -63,19 +63,25 @@ public class Blue_Specimen_ObservationSide extends AutoHardware {
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
         // Step through each leg of the path, ensuring that the Auto mode has not been stopped along the way
-        grabberTilt.setPosition(0.1);
-        grabberL.setPosition(0.0);
+       // sleep(2000);
+        //extends out as neg.
+        //extender.setPower(-1);
+
+        rotator.setPower(-0.8);
         sleep(5000);
-        sleep(500);
+
+        rotator.setPower(0);
+        rotator.setPower(1);
+
+        // sleep(5000);
+        sleep(2000);
+        //extender.setPower(0);
         // Step 1:  Drive forward for 1 second
         //line = "left";
 
-        encoderDrive(0.1,  31,  33, 1.5);
-
-        grabberTilt.setPosition(1);
-
+       // encoderDrive(0.1,  31,  33, 1.5);
         //turnToTargetYaw function(turn 90 degrees clockwise)
-        turnToTargetYaw(90, .1, 5);
+        /*turnToTargetYaw(90, .1, 5);
 
         //sleep(2000);
 
@@ -94,7 +100,7 @@ public class Blue_Specimen_ObservationSide extends AutoHardware {
         //sleep(1000);
         encoderDrive(0.1,  -50,  -53, 2);
         //sleep(1000);
-
+*/
 
 
        /* turn(-0.1, 0.1, 2000);

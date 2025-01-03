@@ -13,6 +13,9 @@ import org.firstinspires.ftc.robotcore.external.navigation.YawPitchRollAngles;
 import org.firstinspires.ftc.vision.VisionPortal;
 import org.firstinspires.ftc.vision.apriltag.AprilTagProcessor;
 
+
+import org.firstinspires.ftc.teamcode.common.hardware.BotCoefficients;
+
 public abstract class AutoHardware extends LinearOpMode {
 
     // motor configurations
@@ -98,7 +101,17 @@ public abstract class AutoHardware extends LinearOpMode {
 
     public void initArm() {
         rotator = hardwareMap.get(DcMotor.class, "liftArm");
+
+        rotator.setTargetPosition(BotCoefficients.SLIDER_HIGH_BAR_HEIGHT);
+        rotator.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        rotator.setPower(Math.abs(BotCoefficients.SLIDER_UP_SPEED));
+
+
         extender = hardwareMap.get(DcMotor.class, "liftHex");
+
+        extender.setTargetPosition(BotCoefficients.SLIDER_HIGH_BAR_HEIGHT);
+        extender.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        extender.setPower(Math.abs(BotCoefficients.SLIDER_UP_SPEED));
         //lifter = hardwareMap.get(DcMotor.class, "lifter");
         //rotator.setPower(0);
         //lifter.setPower(0);
