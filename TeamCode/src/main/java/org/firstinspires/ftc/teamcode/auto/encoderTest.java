@@ -23,9 +23,8 @@ public class encoderTest extends AutoHardware {
 
         sleep(1000);
         extender.setTargetPosition(-1);
-        extender.setTargetPosition(0);
 
-        sleep(2000);
+        sleep(1000);
 
         //rotator.setTargetPosition(1);
         //rotator.setTargetPosition(0);

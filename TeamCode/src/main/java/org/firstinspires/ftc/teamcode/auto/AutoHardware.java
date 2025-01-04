@@ -102,15 +102,19 @@ public abstract class AutoHardware extends LinearOpMode {
     public void initArm() {
         rotator = hardwareMap.get(DcMotor.class, "liftArm");
 
-        rotator.setTargetPosition(BotCoefficients.SLIDER_HIGH_BAR_HEIGHT);
+        extender = hardwareMap.get(DcMotor.class, "liftHex");
+
+        rotator.setTargetPosition(BotCoefficients.SLIDER_BOTTOM_POSITION);
+        rotator.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         rotator.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         rotator.setPower(Math.abs(BotCoefficients.SLIDER_UP_SPEED));
 
 
         extender = hardwareMap.get(DcMotor.class, "liftHex");
 
-        extender.setTargetPosition(BotCoefficients.SLIDER_HIGH_BAR_HEIGHT);
+        extender.setTargetPosition(BotCoefficients.SLIDER_BOTTOM_POSITION);
         extender.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        extender.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         extender.setPower(Math.abs(BotCoefficients.SLIDER_UP_SPEED));
         //lifter = hardwareMap.get(DcMotor.class, "lifter");
         //rotator.setPower(0);

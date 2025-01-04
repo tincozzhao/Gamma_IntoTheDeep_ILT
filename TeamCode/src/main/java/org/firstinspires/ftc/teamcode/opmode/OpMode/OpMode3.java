@@ -111,7 +111,7 @@ public class OpMode3 extends LinearOpMode {
                 robot.tiltServoLeft.setPosition(0.8);
             }
 
-            //tilt servo halfway, for grabbing specimen
+//tilt servo #2
             if (gamepad2.left_stick_y > 0.7) {
                 robot.tiltServoLeft.setPosition(0.0);
 

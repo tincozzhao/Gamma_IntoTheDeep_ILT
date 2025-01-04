@@ -63,19 +63,23 @@ public class Blue_Specimen_ObservationSide extends AutoHardware {
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
         // Step through each leg of the path, ensuring that the Auto mode has not been stopped along the way
-       // sleep(2000);
-        //extends out as neg.
-        //extender.setPower(-1);
+        sleep(2000);
+        // /extends out as neg.
+        // extender.setTargetPosition(0);
+       //extender.setPower(-1);
 
-        rotator.setPower(-0.8);
-        sleep(5000);
-
-        rotator.setPower(0);
         rotator.setPower(1);
+      // sleep(5000);
+       // rotator.setPower(0);
+       // rotator.setPower(1);
 
         // sleep(5000);
-        sleep(2000);
-        //extender.setPower(0);
+        //sleep(2000);
+       // extender.setPower(0);
+
+
+
+
         // Step 1:  Drive forward for 1 second
         //line = "left";
 

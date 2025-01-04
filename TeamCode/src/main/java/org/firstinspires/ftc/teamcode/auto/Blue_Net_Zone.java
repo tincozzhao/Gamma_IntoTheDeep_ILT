@@ -30,6 +30,9 @@
 package org.firstinspires.ftc.teamcode.auto;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.hardware.DcMotor;
+
+import org.firstinspires.ftc.teamcode.common.hardware.BotCoefficients;
 
 /*
  * This OpMode illustrates the concept of driving a path based on time.
@@ -62,14 +65,13 @@ public class Blue_Net_Zone extends AutoHardware {
         telemetry.update();
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
+
         // Step through each leg of the path, ensuring that the Auto mode has not been stopped along the way
         grabberTilt.setPosition(0.8);
 
         grabberL.setPosition(1.0);
 
         sleep(2000);
-
-        sleep(500);
 
 
         encoderDrive(0.3,  38,  38, 9);
@@ -86,6 +88,12 @@ public class Blue_Net_Zone extends AutoHardware {
         turnToTargetYaw(90, .2, 1000);
         encoderDrive(0.3,  -56,  -53, 3);
 
+        sleep(1000);
+        rotator.setTargetPosition(BotCoefficients.SLIDER_LOW_BAR_HEIGHT);
+        rotator.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        rotator.setPower(Math.abs(BotCoefficients.SLIDER_UP_SPEED));
+        sleep(10000);
+        rotator.setPower(0);
 
     }
 }
