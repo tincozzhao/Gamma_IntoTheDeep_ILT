@@ -33,11 +33,24 @@ public class OpMode3 extends LinearOpMode {
         // Put initialization blocks here.
         waitForStart();
         while (opModeIsActive()) {
-            double horizontal = gamepad1.left_stick_x * -0.5;
-            double vertical = -gamepad1.left_stick_y * 0.5;
-            double turn = gamepad1.right_stick_x * 0.5;
+            double horizontal = -1.0 * gamepad1.right_stick_x * 0.6;
+            double vertical = gamepad1.right_stick_y * 0.6;
+            double turn = -1.0 * gamepad1.left_stick_x * 0.6;
 
-            robot.setDrivePower(vertical + turn + horizontal, vertical - turn - horizontal, vertical + turn - horizontal, vertical - turn + horizontal);
+            double flPower = vertical + turn + horizontal;
+            double frPower = vertical - turn - horizontal;
+            double blPower = vertical + turn - horizontal;
+            double brPower = vertical - turn + horizontal;
+            double scaling = Math.max(1.0,
+                    Math.max(Math.max(Math.abs(flPower), Math.abs(frPower)),
+                            Math.max(Math.abs(blPower), Math.abs(brPower))));
+            flPower = flPower / scaling;
+            frPower = frPower / scaling;
+            blPower = blPower / scaling;
+            brPower = brPower / scaling;
+            robot.setDrivePower(flPower, frPower, blPower, brPower);
+
+            // robot.setDrivePower(vertical + turn + horizontal, vertical - turn - horizontal, vertical + turn - horizontal, vertical - turn + horizontal);
 
             telemetry.addLine(String.format("FL: %d \nBL %d \nFR: %d \nBR: %d ",
                     robot.motorfl.getCurrentPosition(),
@@ -62,7 +75,7 @@ public class OpMode3 extends LinearOpMode {
 
  */
 
-            while (gamepad2.b) { //if button a pressed
+         /*   while (gamepad2.b) { //if button a pressed
                 // robot.liftHex.setPower(1.0);
                 robot.liftHex.setPower(1.0);
                 //tilt the lift to be upright
@@ -169,4 +182,7 @@ public class OpMode3 extends LinearOpMode {
 
 
       */
-    }}
+
+        }
+    }
+}
