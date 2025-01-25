@@ -26,7 +26,7 @@ public class RobotHardware {
 
     public DcMotor motorbl = null;
 
-      public DcMotor liftHex = null;
+      public DcMotor misumiSlide = null;
 
       public DcMotor liftArm = null;
 
@@ -75,8 +75,8 @@ public class RobotHardware {
         motorbr = hwMap.get(DcMotor.class, "motorbr");
         //launcher = hwMap.get(DcMotor.class, "launcher");
 
-        liftHex = hwMap.get(DcMotor.class, "liftHex");
         liftArm = hwMap.get(DcMotor.class, "liftArm");
+        misumiSlide = hwMap.get(DcMotor.class, "misumiSlide");
 
         // set Brake zero power behavior
         motorfr.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);

@@ -66,27 +66,27 @@ public class OpMode3 extends LinearOpMode {
 
             //lift arm start
             if (gamepad2.b) { //if button a pressed
-                robot.liftHex.setPower(0.8);
+                robot.misumiSlide.setPower(0.8);
                 //tilt the lift to be upright
                 sleep(1000);
-                robot.liftHex.setPower(0);
+                robot.misumiSlide.setPower(0);
             }
-           robot.liftHex.setPower(0);
+           robot.misumiSlide.setPower(0);
 
 
             while (gamepad2.b) { //if button a pressed
                 // robot.liftHex.setPower(1.0);
-                robot.liftHex.setPower(1.0);
+                robot.misumiSlide.setPower(1.0);
                 //tilt the lift to be upright
             }
-            robot.liftHex.setPower(0);
+            robot.misumiSlide.setPower(0);
 
 
             while (gamepad2.x) {
                 //robot.liftHex.setPower(-1.0);
-                robot.liftHex.setPower(-1.0);
+                robot.misumiSlide.setPower(-1.0);
             }
-            robot.liftHex.setPower(0);
+            robot.misumiSlide.setPower(0);
 
 
             while (gamepad2.a) { //if button a pressed

@@ -26,7 +26,7 @@ public abstract class AutoHardware extends LinearOpMode {
 
     protected DcMotor         frontrightDrive  = null;
 
-    protected DcMotor         rotator  = null;
+    protected DcMotor         misumiSlide  = null;
     protected DcMotor         extender  = null;
 
     protected ElapsedTime     runtime = new ElapsedTime();
@@ -105,17 +105,17 @@ public abstract class AutoHardware extends LinearOpMode {
     }
 
     public void initArm() {
-        rotator = hardwareMap.get(DcMotor.class, "liftArm");
+        misumiSlide = hardwareMap.get(DcMotor.class, "misumiSlide");
 
-        extender = hardwareMap.get(DcMotor.class, "liftHex");
+        extender = hardwareMap.get(DcMotor.class, "liftArm");
 
-        rotator.setTargetPosition(BotCoefficients.SLIDER_BOTTOM_POSITION);
-        rotator.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        rotator.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        rotator.setPower(Math.abs(BotCoefficients.SLIDER_UP_SPEED));
+        misumiSlide.setTargetPosition(BotCoefficients.SLIDER_BOTTOM_POSITION);
+        misumiSlide.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        misumiSlide.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        misumiSlide.setPower(Math.abs(BotCoefficients.SLIDER_UP_SPEED));
 
 
-        extender = hardwareMap.get(DcMotor.class, "liftHex");
+        extender = hardwareMap.get(DcMotor.class, "liftArm");
 
         extender.setTargetPosition(BotCoefficients.SLIDER_BOTTOM_POSITION);
         extender.setMode(DcMotor.RunMode.RUN_TO_POSITION);
