@@ -67,9 +67,9 @@ public class Blue_Net_Zone extends AutoHardware {
         waitForStart();
 
         // Step through each leg of the path, ensuring that the Auto mode has not been stopped along the way
-        grabberTilt.setPosition(0.8);
+        grabberXtilt.setPosition(0.8);
 
-        grabberL.setPosition(1.0);
+        grabberX.setPosition(1.0);
 
         sleep(2000);
 
@@ -78,7 +78,7 @@ public class Blue_Net_Zone extends AutoHardware {
 
         sleep(2000);
 
-        grabberL.setPosition(0.1);
+        grabberX.setPosition(0.1);
 
         sleep(500);
         // turn 90deg clockwise

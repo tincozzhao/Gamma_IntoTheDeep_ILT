@@ -51,7 +51,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
  */
 
 @Autonomous(name=" Auto: Blue Specimen Placement ", group="Robot")
-public class Blue_Specimen_ObservationSide extends AutoHardware {
+public class Blue_HighBasket_ extends AutoHardware {
 
     @Override
     public void runOpMode() {
@@ -65,53 +65,16 @@ public class Blue_Specimen_ObservationSide extends AutoHardware {
         // Step through each leg of the path, ensuring that the Auto mode has not been stopped along the way
         sleep(2000);
         // /extends out as neg.
-        // extender.setTargetPosition(0);
-       //extender.setPower(-1);
+        grabberXtilt.setPosition(0.8);
 
-        rotator.setPower(1);
-      // sleep(5000);
-       // rotator.setPower(0);
-       // rotator.setPower(1);
+        grabberX.setPosition(1.0);
 
-        // sleep(5000);
-        //sleep(2000);
-       // extender.setPower(0);
+        sleep(2000);
 
 
+        encoderDrive(0.3,  38,  38, 9);
 
-
-        // Step 1:  Drive forward for 1 second
-        //line = "left";
-
-       // encoderDrive(0.1,  31,  33, 1.5);
-        //turnToTargetYaw function(turn 90 degrees clockwise)
-        /*turnToTargetYaw(90, .1, 5);
-
-        //sleep(2000);
-
-        // drive backwards (-50) 50 inches, time is .5 second
-        encoderDrive(0.1,  -50,  -53, 0.8);
-        //sleep(1000);
-        turnToTargetYaw(-90, .1, 2000);
-        //sleep(1000);
-        encoderDrive(0.1,  -50,  -53, 1);
-        //sleep(1000);
-       turnToTargetYaw(90, .1, 2000);
-        //sleep(1000);
-        encoderDrive(0.1,  -50,  -53, 0.8);
-        //sleep(1000);
-        turnToTargetYaw(90, .1, 2000);
-        //sleep(1000);
-        encoderDrive(0.1,  -50,  -53, 2);
-        //sleep(1000);
-*/
-
-
-       /* turn(-0.1, 0.1, 2000);
-        encoderDrive(0.1,  31,  31, 1.7);
-        turn(-0.1, 0.1, 1500);
-        encoderDrive(0.1,  31,  31, .5);
-        */
+        sleep(2000);
 
 
     }

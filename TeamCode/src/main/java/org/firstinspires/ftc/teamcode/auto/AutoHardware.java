@@ -80,9 +80,12 @@ public abstract class AutoHardware extends LinearOpMode {
     protected AprilTagProcessor aprilTag;
 
     // servo to place pixel on backboard
-    public Servo grabberTilt = null;
-    public Servo grabberL = null;
-    public Servo grabberR = null;
+    public Servo grabberYtilt = null;
+    public Servo grabberY = null;
+
+    public Servo grabberX = null;
+
+    public Servo grabberXtilt = null;
 
     public void initAll(){
        // initTfodAndAprilTag();
@@ -91,12 +94,14 @@ public abstract class AutoHardware extends LinearOpMode {
         initIMU();
     }
     public void initServo() {
-        grabberTilt = hardwareMap.get(Servo.class, "tiltServoL");
+        grabberYtilt = hardwareMap.get(Servo.class, "grabber2tilt");
        // grabberTilt.setPosition(1);
-        grabberL = hardwareMap.get(Servo.class, "grabServoL");
-       // grabberL.setPosition(0.45);
+        grabberY = hardwareMap.get(Servo.class, "grabber2");
        // grabberR = hardwareMap.get(Servo.class, "grabberR");
        // grabberR.setPosition(0.6);
+        grabberXtilt = hardwareMap.get(Servo.class, "grabber1tilt");
+        grabberX = hardwareMap.get(Servo.class, "grabber1");
+
     }
 
     public void initArm() {

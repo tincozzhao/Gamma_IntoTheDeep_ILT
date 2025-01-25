@@ -50,7 +50,8 @@ public class OpMode3 extends LinearOpMode {
             brPower = brPower / scaling;
             robot.setDrivePower(flPower, frPower, blPower, brPower);
 
-            // robot.setDrivePower(vertical + turn + horizontal, vertical - turn - horizontal, vertical + turn - horizontal, vertical - turn + horizontal);
+            // robot.setDrivePower(vertical + turn + horizontal, vertical
+            // - turn - horizontal, vertical + turn - horizontal, vertical - turn + horizontal);
 
             telemetry.addLine(String.format("FL: %d \nBL %d \nFR: %d \nBR: %d ",
                     robot.motorfl.getCurrentPosition(),
@@ -64,7 +65,6 @@ public class OpMode3 extends LinearOpMode {
 
 
             //lift arm start
-/*
             if (gamepad2.b) { //if button a pressed
                 robot.liftHex.setPower(0.8);
                 //tilt the lift to be upright
@@ -73,9 +73,8 @@ public class OpMode3 extends LinearOpMode {
             }
            robot.liftHex.setPower(0);
 
- */
 
-         /*   while (gamepad2.b) { //if button a pressed
+            while (gamepad2.b) { //if button a pressed
                 // robot.liftHex.setPower(1.0);
                 robot.liftHex.setPower(1.0);
                 //tilt the lift to be upright
@@ -110,26 +109,26 @@ public class OpMode3 extends LinearOpMode {
 
 //grabber
             if (gamepad2.left_trigger > 0.5) {
-                robot.grabServoLeft.setPosition(1.0); // open
+                robot.grabberX.setPosition(1.0); // open
             } else if (gamepad2.left_bumper) {
-                robot.grabServoLeft.setPosition(0.0); // close
+                robot.grabberX.setPosition(0.0); // close
             }
 
 
 //tilt servo
             if (gamepad2.right_stick_y > 0.7) {
-                robot.tiltServoLeft.setPosition(0.0);
+                robot.grabberYtilt.setPosition(0.0);
 
             } else if (gamepad2.right_stick_y < -0.7) {
-                robot.tiltServoLeft.setPosition(0.8);
+                robot.grabberYtilt.setPosition(0.8);
             }
 
 //tilt servo #2
             if (gamepad2.left_stick_y > 0.7) {
-                robot.tiltServoLeft.setPosition(0.0);
+                robot.grabberYtilt.setPosition(0.0);
 
             } else if (gamepad2.left_stick_y < -0.7) {
-                robot.tiltServoLeft.setPosition(0.6);
+                robot.grabberYtilt.setPosition(0.6);
             }
 
 
@@ -185,4 +184,3 @@ public class OpMode3 extends LinearOpMode {
 
         }
     }
-}

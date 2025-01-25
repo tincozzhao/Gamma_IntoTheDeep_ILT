@@ -26,24 +26,24 @@ public class RobotHardware {
 
     public DcMotor motorbl = null;
 
-    //  public DcMotor liftHex = null;
+      public DcMotor liftHex = null;
 
-    //  public DcMotor liftArm = null;
+      public DcMotor liftArm = null;
 
-    //  public DcMotor launcher = null;
+      public DcMotor launcher = null;
 
-    //public DcMotor linearSlider = null;
+    public DcMotor linearSlider = null;
 
 
     //public DistanceSensor distanceR = null;
     //public DistanceSensor distanceL = null;
 
 
-    // public Servo tiltServoRight = null;
-    //  public Servo grabServoRight = null;
+     public Servo grabberXtilt = null; // tilt servo right
+      public Servo grabberX = null;
 
-    // public Servo tiltServoLeft = null;
-    // public Servo grabServoLeft = null;
+     public Servo grabberYtilt = null; //tilt servo left
+     public Servo grabberY = null;
 
 
     //public Servo airplaneLauncher = null;
@@ -75,8 +75,8 @@ public class RobotHardware {
         motorbr = hwMap.get(DcMotor.class, "motorbr");
         //launcher = hwMap.get(DcMotor.class, "launcher");
 
-        //  liftHex = hwMap.get(DcMotor.class, "liftHex");
-        //  liftArm = hwMap.get(DcMotor.class, "liftArm");
+        liftHex = hwMap.get(DcMotor.class, "liftHex");
+        liftArm = hwMap.get(DcMotor.class, "liftArm");
 
         // set Brake zero power behavior
         motorfr.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
