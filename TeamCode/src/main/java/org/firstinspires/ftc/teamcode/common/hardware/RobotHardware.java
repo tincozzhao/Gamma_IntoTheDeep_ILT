@@ -1,11 +1,14 @@
 package org.firstinspires.ftc.teamcode.common.hardware;
 
+
 import com.qualcomm.hardware.bosch.JustLoggingAccelerationIntegrator;
+import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.DistanceSensor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.IMU;
 import com.qualcomm.hardware.rev.RevHubOrientationOnRobot;
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
@@ -16,6 +19,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.YawPitchRollAngles;
 
 
 public class RobotHardware {
+    public CRServo misumiSlide = null;
     /* Declare OpMode members. */
     HardwareMap hwMap =  null;
 
@@ -26,23 +30,27 @@ public class RobotHardware {
 
     public DcMotor motorbl = null;
 
-      public DcMotor misumiSlide = null;
 
       public DcMotor liftArm = null;
 
       public DcMotor launcher = null;
 
-    public DcMotor linearSlider = null;
+    //public DcMotor linearSlider = null;
 
 
     //public DistanceSensor distanceR = null;
     //public DistanceSensor distanceL = null;
 
 
-     public Servo grabberXtilt = null; // tilt servo right
-      public Servo grabberX = null;
+   // public CRServo getMisumiSlide() {
+    //    return misumiSlide;
+    //}
 
-     public Servo grabberYtilt = null; //tilt servo left
+   // public CRServo misumiSlide = null;
+     public Servo grabberXtilt = null; // tilt servo right
+     public Servo grabberX = null;
+
+     public Servo grabberYtilt; //tilt servo left
      public Servo grabberY = null;
 
 
@@ -76,16 +84,24 @@ public class RobotHardware {
         //launcher = hwMap.get(DcMotor.class, "launcher");
 
         liftArm = hwMap.get(DcMotor.class, "liftArm");
-        misumiSlide = hwMap.get(DcMotor.class, "misumiSlide");
+        misumiSlide = hwMap.get(CRServo.class, "misumiSlide");
+        grabberYtilt = hwMap.get(Servo.class, "grabberYtilt");
+        grabberY = hwMap.get(Servo.class, "grabberY");
+        grabberXtilt = hwMap.get(Servo.class, "grabberXtilt");
+        grabberX = hwMap.get(Servo.class, "grabberX");
+
+
 
         // set Brake zero power behavior
         motorfr.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         motorfl.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         motorbr.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         motorbl.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        liftArm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         motorfr.setDirection(DcMotor.Direction.REVERSE);
         motorbr.setDirection(DcMotor.Direction.REVERSE);
         motorbl.setDirection(DcMotor.Direction.REVERSE);
+
 
         //motorbr.setDirection(DcMotor.Direction.REVERSE);
 

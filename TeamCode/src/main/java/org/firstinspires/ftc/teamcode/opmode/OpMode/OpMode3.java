@@ -4,8 +4,10 @@ import android.annotation.SuppressLint;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
+import org.firstinspires.ftc.teamcode.common.hardware.BotCoefficients;
 import org.firstinspires.ftc.teamcode.common.hardware.RobotHardware;
 
 //
@@ -64,42 +66,35 @@ public class OpMode3 extends LinearOpMode {
 //make sure one of the directions is correct/reversed
 
 
-            //lift arm start
-            if (gamepad2.b) { //if button a pressed
-                robot.misumiSlide.setPower(0.8);
-                //tilt the lift to be upright
-                sleep(1000);
-                robot.misumiSlide.setPower(0);
-            }
-           robot.misumiSlide.setPower(0);
-
-
-            while (gamepad2.b) { //if button a pressed
-                // robot.liftHex.setPower(1.0);
+            //misumi slide start
+            if (gamepad2.right_stick_y > 0.5) { //if joystick moved up
+                //misumi slide extends
                 robot.misumiSlide.setPower(1.0);
                 //tilt the lift to be upright
-            }
-            robot.misumiSlide.setPower(0);
-
-
-            while (gamepad2.x) {
-                //robot.liftHex.setPower(-1.0);
+            }else if(gamepad2.right_stick_y < -0.5) {// if joystick moves down
+                // misumi slide retract
                 robot.misumiSlide.setPower(-1.0);
+            }else { //stop
+                robot.misumiSlide.setPower(0.0);
             }
-            robot.misumiSlide.setPower(0);
 
 
-            while (gamepad2.a) { //if button a pressed
-                robot.liftArm.setPower(0.5);
+
+
+            if (gamepad2.a) { //if button a pressed, go down
+               robot.liftArm.setPower(0.7);
                 //tilt the lift to be upright
+            } else {
+                robot.liftArm.setPower(0);
             }
-            robot.liftArm.setPower(0);
 
-
-            while (gamepad2.y) {
-                robot.liftArm.setPower(-0.5);
+            if (gamepad2.y) { //when y button pressed, going up
+                robot.liftArm.setPower(-0.8);
+               // sleep(10000);
+            } else{
+                robot.liftArm.setPower(-0.1);
             }
-            robot.liftArm.setPower(0);
+
 
 
 
@@ -107,23 +102,38 @@ public class OpMode3 extends LinearOpMode {
             //robot.airplaneLauncher.setPosition(1.0);
 
 
-//grabber
+//grabberX
             if (gamepad2.left_trigger > 0.5) {
-                robot.grabberX.setPosition(1.0); // open
+                robot.grabberX.setPosition(0.8); // open
+
+                //sleep(10000);
+                robot.grabberX.setPosition(0);
             } else if (gamepad2.left_bumper) {
                 robot.grabberX.setPosition(0.0); // close
             }
 
 
 //tilt servo
-            if (gamepad2.right_stick_y > 0.7) {
-                robot.grabberYtilt.setPosition(0.0);
+            if (gamepad2.left_stick_y > 0.5) {
+                robot.grabberYtilt.setPosition(1);
 
-            } else if (gamepad2.right_stick_y < -0.7) {
-                robot.grabberYtilt.setPosition(0.8);
+            } else if (gamepad2.left_stick_y < -0.5) {
+                robot.grabberYtilt.setPosition(-1);
+            } else {
+                robot.grabberYtilt.setPosition(0);
+            }
+
+            if (gamepad2.right_trigger > 0.5) {
+                robot.grabberY.setPosition(0.8); // open
+
+                //sleep(10000);
+                robot.grabberX.setPosition(0);
+            } else if (gamepad2.right_bumper) {
+                robot.grabberY.setPosition(0.0); // close
             }
 
 //tilt servo #2
+            /*
             if (gamepad2.left_stick_y > 0.7) {
                 robot.grabberYtilt.setPosition(0.0);
 
@@ -131,7 +141,7 @@ public class OpMode3 extends LinearOpMode {
                 robot.grabberYtilt.setPosition(0.6);
             }
 
-
+*/
         }
 
 
