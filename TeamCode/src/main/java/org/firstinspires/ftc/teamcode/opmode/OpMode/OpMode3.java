@@ -127,9 +127,11 @@ public class OpMode3 extends LinearOpMode {
                 robot.grabberY.setPosition(0.8); // open
 
                 //sleep(10000);
-                robot.grabberX.setPosition(0);
+                robot.grabberY.setPosition(0);
             } else if (gamepad2.right_bumper) {
                 robot.grabberY.setPosition(0.0); // close
+            } else{
+                robot.grabberY.setPosition(0);
             }
 
 //tilt servo #2
