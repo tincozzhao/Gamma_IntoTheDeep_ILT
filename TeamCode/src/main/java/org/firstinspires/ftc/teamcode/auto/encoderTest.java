@@ -10,7 +10,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 import org.firstinspires.ftc.teamcode.common.hardware.RobotHardware;
 
 //ignore this for now
-@Autonomous(name="Red_Near_v2")
+@Autonomous(name="encoderTest")
 public class encoderTest extends LinearOpMode {
     RobotHardware robot = new RobotHardware();
     // Motor encoder parameter
@@ -34,20 +34,17 @@ public class encoderTest extends LinearOpMode {
             sleep(100);
 
             int forwardTicks = 2000;
+            driveMotors(forwardTicks,forwardTicks,forwardTicks,forwardTicks, 0.3, true, robot.yaw0);
             sleep (1000);
 
-            turnToTargetYaw(90, 0.5, 1000);
+           // turnToTargetYaw(90, 0.5, 1000);
 
 
 
+            forwardTicks = -1000;
+            driveMotors(forwardTicks,forwardTicks,forwardTicks,forwardTicks, 0.3, true, robot.yaw0);
 
-
-
-
-
-
-
-
+            sleep(1000);
 
         }
 

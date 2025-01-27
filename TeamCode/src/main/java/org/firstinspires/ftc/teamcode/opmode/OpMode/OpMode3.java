@@ -80,12 +80,12 @@ public class OpMode3 extends LinearOpMode {
 
 
 
-
+//linear slider
             if (gamepad2.a) { //if button a pressed, go down
                robot.liftArm.setPower(0.7);
                 //tilt the lift to be upright
             } else {
-                robot.liftArm.setPower(0);
+               // robot.liftArm.setPower(0);
             }
 
             if (gamepad2.y) { //when y button pressed, going up
@@ -102,7 +102,7 @@ public class OpMode3 extends LinearOpMode {
             //robot.airplaneLauncher.setPosition(1.0);
 
 
-//grabberX
+//grabberX (misumi slide)
             if (gamepad2.left_trigger > 0.5) {
                 robot.grabberX.setPosition(0.8); // open
 
@@ -110,19 +110,23 @@ public class OpMode3 extends LinearOpMode {
                 robot.grabberX.setPosition(0);
             } else if (gamepad2.left_bumper) {
                 robot.grabberX.setPosition(0.0); // close
+            }else{
+              //  robot.grabberX.setPosition(0);
             }
 
 
 //tilt servo
             if (gamepad2.left_stick_y > 0.5) {
-                robot.grabberYtilt.setPosition(1);
+                robot.grabberYtilt.setPosition(0);
 
             } else if (gamepad2.left_stick_y < -0.5) {
-                robot.grabberYtilt.setPosition(-1);
+                robot.grabberYtilt.setPosition(0.8);
             } else {
-                robot.grabberYtilt.setPosition(0);
+               // robot.grabberYtilt.setPosition(0);
             }
 
+
+//grabberY (linearslide)
             if (gamepad2.right_trigger > 0.5) {
                 robot.grabberY.setPosition(0.8); // open
 
@@ -131,7 +135,7 @@ public class OpMode3 extends LinearOpMode {
             } else if (gamepad2.right_bumper) {
                 robot.grabberY.setPosition(0.0); // close
             } else{
-                robot.grabberY.setPosition(0);
+               // robot.grabberY.setPosition(0.0);
             }
 
 //tilt servo #2

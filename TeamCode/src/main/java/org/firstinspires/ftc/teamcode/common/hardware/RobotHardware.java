@@ -100,7 +100,7 @@ public class RobotHardware {
         liftArm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         motorfr.setDirection(DcMotor.Direction.REVERSE);
         motorbr.setDirection(DcMotor.Direction.REVERSE);
-        motorbl.setDirection(DcMotor.Direction.REVERSE);
+      //  motorbl.setDirection(DcMotor.Direction.REVERSE);
 
 
         //motorbr.setDirection(DcMotor.Direction.REVERSE);
