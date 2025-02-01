@@ -19,7 +19,6 @@ import org.firstinspires.ftc.robotcore.external.navigation.YawPitchRollAngles;
 
 
 public class RobotHardware {
-    public CRServo misumiSlide = null;
     /* Declare OpMode members. */
     HardwareMap hwMap =  null;
 
@@ -35,22 +34,11 @@ public class RobotHardware {
 
       public DcMotor launcher = null;
 
-    //public DcMotor linearSlider = null;
-
-
-    //public DistanceSensor distanceR = null;
-    //public DistanceSensor distanceL = null;
-
-
-   // public CRServo getMisumiSlide() {
-    //    return misumiSlide;
-    //}
-
-   // public CRServo misumiSlide = null;
-     public Servo grabberXtilt = null; // tilt servo right
+    public CRServo misumiSlide = null;
+     public Servo grabberXtilt = null; // tilt servo horizontal
      public Servo grabberX = null;
 
-     public Servo grabberYtilt; //tilt servo left
+     public Servo grabberYtilt; //tilt servo vertical (2nd stage)
      public Servo grabberY = null;
 
 
@@ -84,24 +72,30 @@ public class RobotHardware {
         //launcher = hwMap.get(DcMotor.class, "launcher");
 
         liftArm = hwMap.get(DcMotor.class, "liftArm");
+        // Horizontal slide
         misumiSlide = hwMap.get(CRServo.class, "misumiSlide");
+
         grabberYtilt = hwMap.get(Servo.class, "grabberYtilt");
         grabberY = hwMap.get(Servo.class, "grabberY");
         grabberXtilt = hwMap.get(Servo.class, "grabberXtilt");
         grabberX = hwMap.get(Servo.class, "grabberX");
-
-
 
         // set Brake zero power behavior
         motorfr.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         motorfl.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         motorbr.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         motorbl.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        liftArm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         motorfr.setDirection(DcMotor.Direction.REVERSE);
         motorbr.setDirection(DcMotor.Direction.REVERSE);
       //  motorbl.setDirection(DcMotor.Direction.REVERSE);
 
+        // LiftArm motor reset
+//        liftArm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+//        liftArm.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        liftArm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        liftArm.setPower(0);
+
+        misumiSlide.setPower(0);
 
         //motorbr.setDirection(DcMotor.Direction.REVERSE);
 

@@ -15,7 +15,9 @@ public class BotCoefficients {
 
     public static final double SLIDER_UP_SPEED = 0.7;
 
-    public static final double SLIDER_HOLD_POWER = 0.4;
+    public static final double SLIDER_UP_POWER = -0.8;
+    public static final double SLIDER_DOWN_POWER = 0.8;
+    public static final double SLIDER_HOLD_POWER = -0.1;
     public static final int SLIDER_TOP_POSITION = -2900;
     public static final int SLIDER_LOW_BASKET_HEIGHT = -2206;
     public static final int SLIDER_LOW_BAR_HEIGHT = -3500;
