@@ -2,6 +2,8 @@ package org.firstinspires.ftc.teamcode.auto;
 //test
 
 
+import static org.firstinspires.ftc.teamcode.common.hardware.BotCoefficients.SLIDER_DOWN_POWER;
+import static org.firstinspires.ftc.teamcode.common.hardware.BotCoefficients.SLIDER_HOLD_POWER;
 import static org.firstinspires.ftc.teamcode.common.hardware.BotCoefficients.SLIDER_UP_POWER;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
@@ -12,7 +14,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.teamcode.common.hardware.RobotHardware;
 
 //ignore this for now
-@Autonomous(name="HighBasket1_netZone")
+@Autonomous(name="HighBasket_netZone")
 public class HighBasket_netZone extends LinearOpMode {
     RobotHardware robot = new RobotHardware();
     // Motor encoder parameter
@@ -31,33 +33,55 @@ public class HighBasket_netZone extends LinearOpMode {
         waitForStart();
 
         if (opModeIsActive()) {
-            //          robot.tiltServo.setPosition(0.65);
+
+           // turnToTargetYaw(robot.yaw0 -90, 0.3, 10000);
+            //robot.tiltServo.setPosition(0.65);
 
 
+            robot.grabberY.setPosition(0.8);
+
+            int forwardTicks = -200; //forward
+            driveMotors(forwardTicks,forwardTicks,forwardTicks,forwardTicks, 0.5, false, robot.yaw0);
+            sleep (2000);
+
+            forwardTicks = 1000; // strafe left
+            driveMotors(forwardTicks,-forwardTicks,-forwardTicks,forwardTicks, 0.5, false, robot.yaw0);
+            sleep (4000);
 
             //encoder drive BACKWARD
-           int forwardTicks = 1000;
-           driveMotors(forwardTicks,forwardTicks,forwardTicks,forwardTicks, 0.5, false, robot.yaw0);
-            sleep (4000);
-            //ticks 4000/97 ticks each inch
+           //forwardTicks = 100;
+           //driveMotors(forwardTicks,forwardTicks,forwardTicks,forwardTicks, 0.5, false, robot.yaw0);
+          // sleep (2000);
+           //ticks 4000/97 ticks each inch
+
+            forwardTicks = -400;
+            driveMotors(forwardTicks,forwardTicks,-forwardTicks,-forwardTicks, 0.5, false, robot.yaw0);
+            sleep (2000);
 
             //robot.liftArm.(BotCoefficients.SLIDER_TOP_POSITION);
            // sleep(4000);
             robot.liftArm.setPower(SLIDER_UP_POWER);
-            sleep(4000);
-            robot.grabberYtilt.setPosition(0.2);
+            sleep(3000);
+            robot.liftArm.setPower(SLIDER_HOLD_POWER);
+           // sleep(1000);
+            robot.grabberYtilt.setPosition(0.0);
             sleep(2000);
             robot.grabberY.setPosition(0.1);
             sleep(1000);
-            robot.liftArm.setPower(0.7);
+            robot.grabberYtilt.setPosition(0.72);
+            sleep(1000);
+            robot.liftArm.setPower(SLIDER_DOWN_POWER);
+            sleep(2000);
 
-            forwardTicks = -1000; //forwards
+            forwardTicks = 1000; //forwards
             driveMotors(forwardTicks,forwardTicks,forwardTicks,forwardTicks, 0.5, false, robot.yaw0);
             sleep (2000);
 
-            forwardTicks = 1000; //forwards
-            driveMotors(-forwardTicks,forwardTicks,forwardTicks,-forwardTicks, 0.5, false, robot.yaw0);
-            sleep (2000);
+
+          //  forwardTicks = 1000; //forwards
+        //    driveMotors(forwardTicks,forwardTicks,forwardTicks,forwardTicks, 0.5, false, robot.yaw0);
+         //   sleep (2000);
+
 
 
 
@@ -66,7 +90,7 @@ public class HighBasket_netZone extends LinearOpMode {
            // robot.liftArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
             //robot.liftArm.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
             //robot.liftArm.setPower(Math.abs(BotCoefficients.SLIDER_UP_SPEED));
-            sleep(4000);
+            //sleep(4000);
 
            // turnToTargetYaw(90, 0.5, 1000);
 
@@ -76,6 +100,8 @@ public class HighBasket_netZone extends LinearOpMode {
            // driveMotors(forwardTicks,forwardTicks,forwardTicks,forwardTicks, 0.3, true, robot.yaw0);
 
           //  sleep(1000);
+
+
 
         }
 

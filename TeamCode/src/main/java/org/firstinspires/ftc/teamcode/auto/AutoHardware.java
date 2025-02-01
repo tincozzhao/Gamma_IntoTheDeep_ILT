@@ -102,12 +102,12 @@ public abstract class AutoHardware extends LinearOpMode {
         grabberXtilt = hardwareMap.get(Servo.class, "grabberXtilt");
         grabberX = hardwareMap.get(Servo.class, "grabberX");
 
-        misumiSlide = hardwareMap.get(DcMotor.class, "misumiSlide");
+       // misumiSlide = hardwareMap.get(DcMotor.class, "misumiSlide");
 
-        misumiSlide.setTargetPosition(BotCoefficients.SLIDER_BOTTOM_POSITION);
-        misumiSlide.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        misumiSlide.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        misumiSlide.setPower(Math.abs(BotCoefficients.SLIDER_UP_SPEED));
+       // misumiSlide.setTargetPosition(BotCoefficients.SLIDER_BOTTOM_POSITION);
+       // misumiSlide.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+       // misumiSlide.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        //misumiSlide.setPower(Math.abs(BotCoefficients.SLIDER_UP_SPEED));
 
     }
 
@@ -384,7 +384,7 @@ public abstract class AutoHardware extends LinearOpMode {
         orientation0 = imu.getRobotYawPitchRollAngles();
         angularVelocity0 = imu.getRobotAngularVelocity(AngleUnit.DEGREES);
         imu.resetYaw();
-        yaw0 = orientation0.getYaw(AngleUnit.DEGREES);
+        yaw0 = getCurrentYaw();
 
     }
 
@@ -466,30 +466,31 @@ public abstract class AutoHardware extends LinearOpMode {
 */
     public void turnToTargetYaw(double targetYawDegree, double power, long maxAllowedTimeInMills){
         long timeBegin, timeCurrent;
-        double currentYaw = imu.getRobotYawPitchRollAngles().getYaw(AngleUnit.DEGREES);;
+        double currentYaw = getCurrentYaw();;
         int ticks, tickDirection;
         double factor = 1.0;
 
         double diffYaw = Math.abs(currentYaw - targetYawDegree);
-        telemetry.addLine(String.format("\nCurrentYaw=%.2f\nTargetYaw=%.2f", currentYaw, targetYawDegree));
+        telemetry.addLine(String.format("\nCurrentYaw=%.2f\nTargetYaw=%.2f\nYaw0=%.2f",
+                currentYaw, targetYawDegree, yaw0));
         telemetry.update();
 
         timeBegin = timeCurrent = System.currentTimeMillis();
-        while (diffYaw > 0.5
+        while (diffYaw > 2
                 && opModeIsActive()
                 && ((timeCurrent-timeBegin) < maxAllowedTimeInMills)) {
             ticks = (int) (diffYaw * ticksPerDegree);
-            if (ticks > 130)
-                ticks = 130;
+            if (ticks > 100)
+                ticks = 100;
 
             tickDirection = (currentYaw < targetYawDegree) ? -1 : 1;
-            if (ticks < 1)
+            if (ticks < 5)
                 break;
-            if (diffYaw > 3)
+            if (diffYaw > 5)
                 factor = 1.0;
             else
-                factor = diffYaw / 3;
-            factor = 1.0;
+                factor = diffYaw / 5;
+            // factor = 1.0;
             driveMotors(
                     (int)(tickDirection * ticks),
                     (int)(tickDirection * ticks),
@@ -497,7 +498,7 @@ public abstract class AutoHardware extends LinearOpMode {
                     -(int)(tickDirection * ticks),
                     power * factor, false, 0);
             sleep(30);
-            currentYaw = imu.getRobotYawPitchRollAngles().getYaw(AngleUnit.DEGREES);
+            currentYaw = getCurrentYaw();
             timeCurrent = System.currentTimeMillis();
             diffYaw = Math.abs(currentYaw - targetYawDegree);
 
