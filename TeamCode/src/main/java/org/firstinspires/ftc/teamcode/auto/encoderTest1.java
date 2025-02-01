@@ -21,7 +21,7 @@ import org.firstinspires.ftc.teamcode.common.hardware.RobotHardware;
 
 //ignore this for now
 @Autonomous(name="encoderTest")
-public class encoderTest extends LinearOpMode {
+public class encoderTest1 extends LinearOpMode {
     RobotHardware robot = new RobotHardware();
     // Motor encoder parameter
     double ticksPerInch = 31.3;
@@ -44,13 +44,13 @@ public class encoderTest extends LinearOpMode {
 
 
             //encoder drive BACKWARD
-           int forwardTicks = 1000;
-           driveMotors(forwardTicks,forwardTicks,forwardTicks,forwardTicks, 0.5, false, robot.yaw0);
-            sleep (4000);
+            int forwardTicks = 3000;
+            driveMotors(forwardTicks,forwardTicks,forwardTicks,forwardTicks, 0.5, false, robot.yaw0);
+            sleep (5000);
             //ticks 4000/97 ticks each inch
 
             //robot.liftArm.(BotCoefficients.SLIDER_TOP_POSITION);
-           // sleep(4000);
+            // sleep(4000);
             robot.liftArm.setPower(SLIDER_UP_POWER);
             sleep(4000);
             robot.grabberYtilt.setPosition(0.2);
@@ -71,19 +71,19 @@ public class encoderTest extends LinearOpMode {
 
 
 
-           // robot.liftArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            // robot.liftArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
             //robot.liftArm.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
             //robot.liftArm.setPower(Math.abs(BotCoefficients.SLIDER_UP_SPEED));
             sleep(4000);
 
-           // turnToTargetYaw(90, 0.5, 1000);
+            // turnToTargetYaw(90, 0.5, 1000);
 
 
 
-         //   forwardTicks = -1000;
-           // driveMotors(forwardTicks,forwardTicks,forwardTicks,forwardTicks, 0.3, true, robot.yaw0);
+            //   forwardTicks = -1000;
+            // driveMotors(forwardTicks,forwardTicks,forwardTicks,forwardTicks, 0.3, true, robot.yaw0);
 
-          //  sleep(1000);
+            //  sleep(1000);
 
         }
 

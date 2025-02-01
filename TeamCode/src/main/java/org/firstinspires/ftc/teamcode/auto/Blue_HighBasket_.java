@@ -66,6 +66,12 @@ public class Blue_HighBasket_ extends AutoHardware {
         sleep(2000);
         // /extends out as neg.
         grabberXtilt.setPosition(0.8);
+        grabberXtilt.setPosition(0.0);
+        grabberY.setPosition(0.7);
+        sleep(1000);
+        grabberY.setPosition(0.1);
+        sleep(1000);
+
 
         grabberX.setPosition(1.0);
 
