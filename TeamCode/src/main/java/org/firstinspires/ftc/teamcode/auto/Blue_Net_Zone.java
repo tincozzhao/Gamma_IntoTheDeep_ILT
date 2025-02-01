@@ -89,11 +89,11 @@ public class Blue_Net_Zone extends AutoHardware {
         encoderDrive(0.3,  -56,  -53, 3);
 
         sleep(1000);
-        extender.setTargetPosition(BotCoefficients.SLIDER_LOW_BAR_HEIGHT);
-        extender.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        extender.setPower(Math.abs(BotCoefficients.SLIDER_UP_SPEED));
+      //  extender.setTargetPosition(BotCoefficients.SLIDER_LOW_BAR_HEIGHT);
+      //  extender.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+      //  extender.setPower(Math.abs(BotCoefficients.SLIDER_UP_SPEED));
         sleep(10000);
-        extender.setPower(0);
+      //  extender.setPower(0);
 
     }
 }

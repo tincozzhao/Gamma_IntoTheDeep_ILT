@@ -27,7 +27,7 @@ public abstract class AutoHardware extends LinearOpMode {
     protected DcMotor         frontrightDrive  = null;
 
     protected DcMotor         misumiSlide  = null;
-    protected DcMotor         extender  = null;
+    protected DcMotor         liftArm  = null;
 
     protected ElapsedTime     runtime = new ElapsedTime();
 
@@ -94,33 +94,31 @@ public abstract class AutoHardware extends LinearOpMode {
         initIMU();
     }
     public void initServo() {
-        grabberYtilt = hardwareMap.get(Servo.class, "grabber2tilt");
+        grabberYtilt = hardwareMap.get(Servo.class, "grabberYtilt");
        // grabberTilt.setPosition(1);
-        grabberY = hardwareMap.get(Servo.class, "grabber2");
+        grabberY = hardwareMap.get(Servo.class, "grabberY");
        // grabberR = hardwareMap.get(Servo.class, "grabberR");
        // grabberR.setPosition(0.6);
-        grabberXtilt = hardwareMap.get(Servo.class, "grabber1tilt");
-        grabberX = hardwareMap.get(Servo.class, "grabber1");
+        grabberXtilt = hardwareMap.get(Servo.class, "grabberXtilt");
+        grabberX = hardwareMap.get(Servo.class, "grabberX");
 
-    }
-
-    public void initArm() {
         misumiSlide = hardwareMap.get(DcMotor.class, "misumiSlide");
-
-        extender = hardwareMap.get(DcMotor.class, "liftArm");
 
         misumiSlide.setTargetPosition(BotCoefficients.SLIDER_BOTTOM_POSITION);
         misumiSlide.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         misumiSlide.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         misumiSlide.setPower(Math.abs(BotCoefficients.SLIDER_UP_SPEED));
 
+    }
 
-        extender = hardwareMap.get(DcMotor.class, "liftArm");
+    public void initArm() {
 
-        extender.setTargetPosition(BotCoefficients.SLIDER_BOTTOM_POSITION);
-        extender.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        extender.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        extender.setPower(Math.abs(BotCoefficients.SLIDER_UP_SPEED));
+        liftArm = hardwareMap.get(DcMotor.class, "liftArm");
+
+        liftArm.setTargetPosition(BotCoefficients.SLIDER_BOTTOM_POSITION);
+        liftArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        liftArm.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        liftArm.setPower(Math.abs(BotCoefficients.SLIDER_UP_SPEED));
         //lifter = hardwareMap.get(DcMotor.class, "lifter");
         //rotator.setPower(0);
         //lifter.setPower(0);
@@ -385,6 +383,7 @@ public abstract class AutoHardware extends LinearOpMode {
         // Retrieve the very initial Rotational Angles and Velocities
         orientation0 = imu.getRobotYawPitchRollAngles();
         angularVelocity0 = imu.getRobotAngularVelocity(AngleUnit.DEGREES);
+        imu.resetYaw();
         yaw0 = orientation0.getYaw(AngleUnit.DEGREES);
 
     }
