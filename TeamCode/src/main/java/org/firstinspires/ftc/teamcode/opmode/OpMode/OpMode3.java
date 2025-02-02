@@ -126,19 +126,19 @@ public class OpMode3 extends LinearOpMode {
 
 //grabberY (linearslide)
             if (gamepad2.right_trigger > 0.5) {
-                robot.grabberY.setPosition(0.45); // open
+                robot.grabberY.setPosition(BotCoefficients.grabberYOpen); // open
            } else if (gamepad2.right_bumper) {
-                robot.grabberY.setPosition(0.8); // close
+                robot.grabberY.setPosition(BotCoefficients.grabberYClose); // close
             } else{
                // robot.grabberY.setPosition(0.0);
             }
 
 //tilt servo on Y vertical slide
             if (gamepad2.y) {
-                robot.grabberYtilt.setPosition(0.0);    // tilt up
+                robot.grabberYtilt.setPosition(BotCoefficients.grabberYtiltUp);    // tilt up
 
             } else if (gamepad2.a) {
-                robot.grabberYtilt.setPosition(0.72);      // tilt down
+                robot.grabberYtilt.setPosition(BotCoefficients.grabberYtiltDown);      // tilt down
                 // AND open the grabber
 
             } else {

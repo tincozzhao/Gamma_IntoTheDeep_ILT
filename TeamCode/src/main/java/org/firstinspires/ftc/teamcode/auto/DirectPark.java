@@ -2,7 +2,13 @@ package org.firstinspires.ftc.teamcode.auto;
 //test
 
 
-import static org.firstinspires.ftc.teamcode.common.hardware.BotCoefficients.SLIDER_UP_POWER;
+import static org.firstinspires.ftc.teamcode.common.hardware.BotCoefficients.AUTO_SLIDER_UP;
+import static org.firstinspires.ftc.teamcode.common.hardware.BotCoefficients.SLIDER_DOWN_POWER;
+import static org.firstinspires.ftc.teamcode.common.hardware.BotCoefficients.SLIDER_HOLD_POWER;
+import static org.firstinspires.ftc.teamcode.common.hardware.BotCoefficients.grabberYClose;
+import static org.firstinspires.ftc.teamcode.common.hardware.BotCoefficients.grabberYOpen;
+import static org.firstinspires.ftc.teamcode.common.hardware.BotCoefficients.grabberYtiltDown;
+import static org.firstinspires.ftc.teamcode.common.hardware.BotCoefficients.grabberYtiltUp;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
@@ -12,8 +18,8 @@ import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.teamcode.common.hardware.RobotHardware;
 
 //ignore this for now
-@Autonomous(name="HighBasket_obsZone")
-public class HighBasket1_obsZone extends LinearOpMode {
+@Autonomous(name="DirectPark")
+public class DirectPark extends LinearOpMode {
     RobotHardware robot = new RobotHardware();
     // Motor encoder parameter
     double ticksPerInch = 31.3;
@@ -31,51 +37,13 @@ public class HighBasket1_obsZone extends LinearOpMode {
         waitForStart();
 
         if (opModeIsActive()) {
-            //          robot.tiltServo.setPosition(0.65);
 
 
-
-            //encoder drive BACKWARD
-            int forwardTicks = 3000;
-            driveMotors(forwardTicks,forwardTicks,forwardTicks,forwardTicks, 0.5, false, robot.yaw0);
-            sleep (5000);
-            //ticks 4000/97 ticks each inch
-
-            //robot.liftArm.(BotCoefficients.SLIDER_TOP_POSITION);
-            // sleep(4000);
-            robot.liftArm.setPower(SLIDER_UP_POWER);
-            sleep(4000);
-            robot.grabberYtilt.setPosition(0.2);
-            sleep(2000);
-            robot.grabberY.setPosition(0.1);
-            sleep(1000);
-            robot.liftArm.setPower(0.7);
-
-            forwardTicks = -1000; //forwards
-            driveMotors(forwardTicks,forwardTicks,forwardTicks,forwardTicks, 0.5, false, robot.yaw0);
-            sleep (2000);
-
-            forwardTicks = 1000; //forwards
-            driveMotors(-forwardTicks,forwardTicks,forwardTicks,-forwardTicks, 0.5, false, robot.yaw0);
-            sleep (2000);
+            int forwardTicks = -2000; // strafe right
+            driveMotors(forwardTicks,-forwardTicks,-forwardTicks,forwardTicks, 0.5, false, robot.yaw0);
+            sleep (3000);
 
 
-
-
-
-            // robot.liftArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            //robot.liftArm.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-            //robot.liftArm.setPower(Math.abs(BotCoefficients.SLIDER_UP_SPEED));
-            sleep(4000);
-
-            // turnToTargetYaw(90, 0.5, 1000);
-
-
-
-            //   forwardTicks = -1000;
-            // driveMotors(forwardTicks,forwardTicks,forwardTicks,forwardTicks, 0.3, true, robot.yaw0);
-
-            //  sleep(1000);
 
         }
 
