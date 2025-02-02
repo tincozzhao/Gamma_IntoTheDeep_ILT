@@ -45,7 +45,7 @@ public class HighBasket_netZone extends LinearOpMode {
 
             robot.grabberY.setPosition(0.8);
 
-            int forwardTicks = -200; //forward
+            int forwardTicks = -230; //forward
             driveMotors(forwardTicks,forwardTicks,forwardTicks,forwardTicks, 0.5, false, robot.yaw0);
             sleep (1500);
 
@@ -66,7 +66,7 @@ public class HighBasket_netZone extends LinearOpMode {
             //robot.liftArm.(BotCoefficients.SLIDER_TOP_POSITION);
            // sleep(4000);
             robot.liftArm.setPower(AUTO_SLIDER_UP);
-            sleep(2000);
+            sleep(1700);
             robot.liftArm.setPower(SLIDER_HOLD_POWER);
            // sleep(1000);
             robot.grabberYtilt.setPosition(grabberYtiltUp);
