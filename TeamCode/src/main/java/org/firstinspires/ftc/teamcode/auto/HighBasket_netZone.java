@@ -5,10 +5,8 @@ package org.firstinspires.ftc.teamcode.auto;
 import static org.firstinspires.ftc.teamcode.common.hardware.BotCoefficients.AUTO_SLIDER_UP;
 import static org.firstinspires.ftc.teamcode.common.hardware.BotCoefficients.SLIDER_DOWN_POWER;
 import static org.firstinspires.ftc.teamcode.common.hardware.BotCoefficients.SLIDER_HOLD_POWER;
-import static org.firstinspires.ftc.teamcode.common.hardware.BotCoefficients.SLIDER_UP_POWER;
 import static org.firstinspires.ftc.teamcode.common.hardware.BotCoefficients.grabberYClose;
 import static org.firstinspires.ftc.teamcode.common.hardware.BotCoefficients.grabberYOpen;
-import static org.firstinspires.ftc.teamcode.common.hardware.BotCoefficients.grabberYtiltDown;
 import static org.firstinspires.ftc.teamcode.common.hardware.BotCoefficients.grabberYtiltUp;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
