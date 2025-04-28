@@ -5,6 +5,10 @@ package org.firstinspires.ftc.teamcode.auto;
 import static org.firstinspires.ftc.teamcode.common.hardware.BotCoefficients.AUTO_SLIDER_UP;
 import static org.firstinspires.ftc.teamcode.common.hardware.BotCoefficients.SLIDER_DOWN_POWER;
 import static org.firstinspires.ftc.teamcode.common.hardware.BotCoefficients.SLIDER_HOLD_POWER;
+import static org.firstinspires.ftc.teamcode.common.hardware.BotCoefficients.grabberXClose;
+import static org.firstinspires.ftc.teamcode.common.hardware.BotCoefficients.grabberXOpen;
+import static org.firstinspires.ftc.teamcode.common.hardware.BotCoefficients.grabberXtiltDown;
+import static org.firstinspires.ftc.teamcode.common.hardware.BotCoefficients.grabberXtiltUp;
 import static org.firstinspires.ftc.teamcode.common.hardware.BotCoefficients.grabberYClose;
 import static org.firstinspires.ftc.teamcode.common.hardware.BotCoefficients.grabberYOpen;
 import static org.firstinspires.ftc.teamcode.common.hardware.BotCoefficients.grabberYtiltDown;
@@ -64,6 +68,8 @@ public class HighBasket_netZone2 extends LinearOpMode {
 
             //robot.liftArm.(BotCoefficients.SLIDER_TOP_POSITION);
            // sleep(4000);
+            robot.grabberY.setPosition(grabberYClose);
+            sleep(500);
             robot.liftArm.setPower(AUTO_SLIDER_UP);
             sleep(1600);
             robot.liftArm.setPower(SLIDER_HOLD_POWER);
@@ -87,11 +93,22 @@ public class HighBasket_netZone2 extends LinearOpMode {
             driveMotors(forwardTicks,-forwardTicks,-forwardTicks,forwardTicks, 0.5, false, robot.yaw0);
             sleep (700);
 
-            /* forwardTicks = -2000; //forward
+            forwardTicks = -2000; //forward
             driveMotors(forwardTicks,forwardTicks,forwardTicks,forwardTicks, 0.5, false, robot.yaw0);
-            sleep (2000);
+            sleep (1000);
 
-            forwardTicks = 1000; //rotate counter clockwise
+            robot.grabberX.setPosition(grabberXClose);
+            sleep(1000);
+            robot.grabberXtilt.setPosition(grabberXtiltUp);
+            sleep(1000);
+            robot.grabberX.setPosition(grabberXOpen);
+            sleep(1000);
+            robot.grabberXtilt.setPosition(grabberXtiltDown);
+            sleep(1000);
+            robot.grabberY.setPosition(grabberYClose);
+            sleep(1000);
+
+            /* forwardTicks = 1000; //rotate counter clockwise
             driveMotors(forwardTicks,forwardTicks,-forwardTicks,-forwardTicks, 0.5, false, robot.yaw0);
             sleep (1500);
 
