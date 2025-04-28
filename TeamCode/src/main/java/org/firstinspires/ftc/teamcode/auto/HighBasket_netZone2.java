@@ -18,7 +18,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.teamcode.common.hardware.RobotHardware;
 
 //ignore this for now
-@Autonomous(name="HighBasket_netZone")
+@Autonomous(name="HighBasket_netZone2")
 public class HighBasket_netZone2 extends LinearOpMode {
     RobotHardware robot = new RobotHardware();
     // Motor encoder parameter
@@ -80,14 +80,14 @@ public class HighBasket_netZone2 extends LinearOpMode {
             //robot.liftArm.setPower(0.0);
 
             forwardTicks = 400; //rotate counter clockwise
-            //driveMotors(forwardTicks,forwardTicks,-forwardTicks,-forwardTicks, 0.5, false, robot.yaw0);
-            //sleep (1500);
+            driveMotors(forwardTicks,forwardTicks,-forwardTicks,-forwardTicks, 0.5, false, robot.yaw0);
+            sleep (1500);
 
-           /* forwardTicks = -900; // strafe rt
+           forwardTicks = -900; // strafe rt
             driveMotors(forwardTicks,-forwardTicks,-forwardTicks,forwardTicks, 0.5, false, robot.yaw0);
-            sleep (2000);
+            sleep (700);
 
-            forwardTicks = -2000; //forward
+            /* forwardTicks = -2000; //forward
             driveMotors(forwardTicks,forwardTicks,forwardTicks,forwardTicks, 0.5, false, robot.yaw0);
             sleep (2000);
 
