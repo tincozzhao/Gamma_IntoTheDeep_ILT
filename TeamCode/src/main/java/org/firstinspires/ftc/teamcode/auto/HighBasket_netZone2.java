@@ -108,6 +108,48 @@ public class HighBasket_netZone2 extends LinearOpMode {
             robot.grabberY.setPosition(grabberYClose);
             sleep(1000);
 
+            forwardTicks = 700; //backward
+            driveMotors(forwardTicks,forwardTicks,forwardTicks,forwardTicks, 0.5, false, robot.yaw0);
+            sleep (1000);
+
+            forwardTicks = -400; //rotate clockwise
+            driveMotors(forwardTicks,forwardTicks,-forwardTicks,-forwardTicks, 0.5, false, robot.yaw0);
+            sleep (1500);
+
+            robot.liftArm.setPower(AUTO_SLIDER_UP);
+            sleep(1600);
+            robot.liftArm.setPower(SLIDER_HOLD_POWER);
+            // sleep(1000);
+            robot.grabberYtilt.setPosition(grabberYtiltUp);
+            sleep(2700);
+            robot.grabberY.setPosition(grabberYOpen);
+            sleep(1000);
+            robot.grabberYtilt.setPosition(grabberYClose);
+            //robot.grabberYtilt.setPosition(grabberYtiltDown);
+            sleep(2700);
+            robot.liftArm.setPower(SLIDER_DOWN_POWER);
+            sleep(2000);
+
+            forwardTicks = 400; //rotate counter clockwise
+            driveMotors(forwardTicks,forwardTicks,-forwardTicks,-forwardTicks, 0.5, false, robot.yaw0);
+            sleep (1500);
+
+            forwardTicks = -900; // strafe rt
+            driveMotors(forwardTicks,-forwardTicks,-forwardTicks,forwardTicks, 0.5, false, robot.yaw0);
+            sleep (2000);
+
+            forwardTicks = -2000; //forward
+            driveMotors(forwardTicks,forwardTicks,forwardTicks,forwardTicks, 0.5, false, robot.yaw0);
+            sleep (2000);
+
+            forwardTicks = 1000; //rotate counter clockwise
+            driveMotors(forwardTicks,forwardTicks,-forwardTicks,-forwardTicks, 0.5, false, robot.yaw0);
+            sleep (1500);
+
+            forwardTicks = 700; //forward
+            driveMotors(forwardTicks,forwardTicks,forwardTicks,forwardTicks, 0.5, false, robot.yaw0);
+            sleep (1000);
+
             /* forwardTicks = 1000; //rotate counter clockwise
             driveMotors(forwardTicks,forwardTicks,-forwardTicks,-forwardTicks, 0.5, false, robot.yaw0);
             sleep (1500);
