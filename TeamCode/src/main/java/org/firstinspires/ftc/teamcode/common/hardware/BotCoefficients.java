@@ -12,7 +12,7 @@ public class BotCoefficients {
     public static double grabberXClose = 0.8;
 
     public static double grabberXtiltDown = 0.72;
-    public static double grabberXtiltUp = 0.0;
+    public static double grabberXtiltUp = 0.1;
 
     public static double grabberYtiltDown = 0.72;
 
@@ -24,7 +24,7 @@ public class BotCoefficients {
 
     public static final double SLIDER_UP_SPEED = 0.7;
 
-    public static final double AUTO_SLIDER_UP = -0.8;
+    public static final double AUTO_SLIDER_UP = -0.9;
 
     public static final double SLIDER_UP_POWER = -0.8;
     public static final double SLIDER_DOWN_POWER = 0.8;

@@ -121,7 +121,7 @@ public class HighBasket_netZone2 extends LinearOpMode {
             sleep (300);
 
             robot.liftArm.setPower(AUTO_SLIDER_UP);
-            sleep(1600);
+            sleep(1500);
             robot.liftArm.setPower(SLIDER_HOLD_POWER);
             // sleep(1000);
             robot.grabberYtilt.setPosition(grabberYtiltUp);
