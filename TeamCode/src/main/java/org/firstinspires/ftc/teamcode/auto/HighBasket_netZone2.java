@@ -89,7 +89,7 @@ public class HighBasket_netZone2 extends LinearOpMode {
             driveMotors(forwardTicks,forwardTicks,-forwardTicks,-forwardTicks, 0.5, false, robot.yaw0);
             sleep (1500);
 //
-           forwardTicks = -550; // strafe rt
+           forwardTicks = -500; // strafe rt
             driveMotors(forwardTicks,-forwardTicks,-forwardTicks,forwardTicks, 0.5, false, robot.yaw0);
             sleep (700);
 
@@ -108,7 +108,11 @@ public class HighBasket_netZone2 extends LinearOpMode {
             //robot.grabberY.setPosition(grabberYClose);
             //sleep(1000);
 
-            forwardTicks = 700; //backward
+            forwardTicks = 500; // strafe left
+            driveMotors(forwardTicks,-forwardTicks,-forwardTicks,forwardTicks, 0.5, false, robot.yaw0);
+            sleep (700);
+
+            forwardTicks = 775; //backward
             driveMotors(forwardTicks,forwardTicks,forwardTicks,forwardTicks, 0.5, false, robot.yaw0);
             sleep (1000);
 
@@ -124,11 +128,12 @@ public class HighBasket_netZone2 extends LinearOpMode {
             sleep(2700);
             robot.grabberY.setPosition(grabberYOpen);
             sleep(1000);
-            robot.grabberYtilt.setPosition(grabberYClose);
-            //robot.grabberYtilt.setPosition(grabberYtiltDown);
-            sleep(2700);
+            robot.grabberY.setPosition(grabberYClose);
+            //  robot.grabberYtilt.setPosition(grabberYtiltDown);
+            // sleep(2000);
             robot.liftArm.setPower(SLIDER_DOWN_POWER);
             sleep(2000);
+            robot.liftArm.setPower(0.0);
 
             forwardTicks = 400; //rotate counter clockwise
             driveMotors(forwardTicks,forwardTicks,-forwardTicks,-forwardTicks, 0.5, false, robot.yaw0);
