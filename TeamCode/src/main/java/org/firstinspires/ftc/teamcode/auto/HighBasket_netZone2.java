@@ -93,7 +93,7 @@ public class HighBasket_netZone2 extends LinearOpMode {
             driveMotors(forwardTicks,-forwardTicks,-forwardTicks,forwardTicks, 0.5, false, robot.yaw0);
             sleep (700);
 
-            forwardTicks = -750; //forward
+            forwardTicks = -700; //forward
             driveMotors(forwardTicks,forwardTicks,forwardTicks,forwardTicks, 0.5, false, robot.yaw0);
             sleep (1000);
 
