@@ -12,7 +12,7 @@ public class BotCoefficients {
     public static double grabberXClose = 0.8;
 
     public static double grabberXtiltDown = 0.72;
-    public static double grabberXtiltUp = 0.25;
+    public static double grabberXtiltUp = 0.1;
 
     public static double grabberYtiltDown = 0.72;
 
